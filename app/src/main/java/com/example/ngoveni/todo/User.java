@@ -1,7 +1,5 @@
 package com.example.ngoveni.todo;
-/**
- * Created by Mofokeng on 16-Oct-16.
- */
+
 public class User {
 
     public User(String password, String userName, String fName, String lName) {

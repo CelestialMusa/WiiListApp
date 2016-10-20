@@ -39,8 +39,7 @@ public class DBActivity extends SQLiteOpenHelper{
                         "    username TEXT," +
                         "    taskDescription TEXT," +
                         "    taskDueDate TEXT," +
-                        "    taskCompleted INTEGER," +
-                        "    FOREIGN KEY (username) REFERENCES user (username) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED" +
+                        "    taskCompleted INTEGER,"  +
                         ");"
         );
     }
@@ -90,6 +89,7 @@ public class DBActivity extends SQLiteOpenHelper{
             tasks.add(newTask);
             res.moveToNext();
         }
+        res.close();
         return  tasks;
     }
 }

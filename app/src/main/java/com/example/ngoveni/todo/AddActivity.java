@@ -69,17 +69,28 @@ public class AddActivity extends AppCompatActivity {
 
                 }
 
-                Task task = new Task(title, descript, finalDate, complete, username);
 
-                DBActivity handler = new DBActivity(AddActivity.this);
 
-                boolean status = handler.insertTask(task);
+                try{
+                    Task task = new Task(title, descript, finalDate, complete, username);
 
-                if(status){
-                    Toast.makeText(AddActivity.this,"Task Added",Toast.LENGTH_LONG).show();
+                    DBActivity handler = new DBActivity(AddActivity.this);
+
+                    boolean status = handler.insertTask(task);
+
+                    if(status){
+                        Toast.makeText(AddActivity.this,"Task Added",Toast.LENGTH_LONG).show();
+
+                        Intent i = new Intent(AddActivity.this, Home.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else{
+                        Toast.makeText(AddActivity.this,"Database Error",Toast.LENGTH_LONG).show();
+                    }
                 }
-                else{
-                    Toast.makeText(AddActivity.this,"Database Error",Toast.LENGTH_LONG).show();
+                catch(Exception ex){
+                    Toast.makeText(AddActivity.this,"Database Read Error",Toast.LENGTH_LONG).show();
                 }
             }
         });
